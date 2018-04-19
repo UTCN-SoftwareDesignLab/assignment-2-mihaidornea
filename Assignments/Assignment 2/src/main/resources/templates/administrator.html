@@ -1,0 +1,27 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Administrator Page</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+
+<h1>Administrator Page</h1>
+
+<form action="#" th:action="@{/goToForm}" method="get">
+    <p><input type="submit" class="button" value="Create Employee" name="create" />
+</form>
+
+<form action="#" th:action="@{/seeAll}" method="get">
+    <p><input type="submit" class="button" value="See Employees" name="seeAll" />
+</form>
+
+<form action="#" th:action="@{/deleteEmployee}" method="get">
+    <p><input type="submit" class="button" value="Delete Employee" name="delete" />
+</form>
+
+<form action="#" th:action="@{/updateEmployee}" method="get">
+    <p><input type="submit" class="button" value="Update Employee" name="update" />
+</form>
+
+</body>
