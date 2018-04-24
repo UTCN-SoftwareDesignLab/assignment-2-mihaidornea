@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Find Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Found Books</h1>
+
+<table>
+    <tbody>
+    <th>
+    <td>Title</td>
+    <td>Author</td>
+    <td>ISBN</td>
+    <td>Genre</td>
+    <td>Quantity</td>
+    <td>Price</td>
+    </th>
+    <tr th:each="book : ${ book }">
+        <td th:text="${book.title}">Title</td>
+        <td th:text="${book.author}">Author</td>
+        <td th:text="${book.isbn}">ISBN</td>
+        <td th:text="${book.genre}">Genre</td>
+        <td th:text="${book.quantity}">Quantity</td>
+        <td th:text="${book.price}">Price</td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{/goHomeRegUser}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goHome" />
+</form>
+
+</body>
+</html>

@@ -1,17 +1,17 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <title>Employee Delete Form</title>
+    <title>Book Deletion Form</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 </head>
 <body>
-<h1>Insert Employee Data</h1>
-<form action="#" th:action="@{/employeeDeleteForm}" th:object="${employeeDto}" method="post">
+<h1>Insert Book Data</h1>
+<form action="#" th:action="@{/bookDeleteForm}" th:object="${bookDto}" method="post">
     <table>
         <tr>
-            <td>Username:</td>
-            <td><input type="text" th:field="*{username}" /></td>
-            <td th:if="${#fields.hasErrors('username')}" th:errors="*{username}">Username Error</td>
+            <td>ISBN:</td>
+            <td><input type="text" th:field="*{isbn}" /></td>
+            <td th:if="${#fields.hasErrors('isbn')}" th:errors="*{isbn}">Password Error</td>
         </tr>
         <tr>
             <td><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></td>

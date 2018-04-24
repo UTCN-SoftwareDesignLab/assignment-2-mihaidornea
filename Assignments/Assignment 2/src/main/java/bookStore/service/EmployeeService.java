@@ -12,6 +12,6 @@ public interface EmployeeService {
      List<Employee> findAll();
     EmployeeDto findByUsername(String username);
     void create(EmployeeDto employeeDto);
-     void delete(EmployeeDto employeeDto);
-     void update(EmployeeDto employeeDto, String newUsername);
+    void delete(EmployeeDto employeeDto);
+    void update(EmployeeDto employeeDto, String newUsername);
 }

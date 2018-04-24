@@ -1,7 +1,10 @@
 package bookStore.controller;
 
 
+import bookStore.dto.BookDto;
+import bookStore.entity.Book;
 import bookStore.entity.Employee;
+import bookStore.service.BookService;
 import bookStore.service.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,18 +19,28 @@ public class MainController {
 
 
     EmployeeService employeeService;
+    BookService bookService;
 
     @Autowired
-    public MainController(final EmployeeService employeeService){
+    public MainController(final EmployeeService employeeService, final BookService bookService){
         this.employeeService = employeeService;
+        this.bookService = bookService;
     }
 
-    @GetMapping(path="/all")
+    @GetMapping(path="/allEmployees")
     public @ResponseBody
     Iterable<Employee> getAllStudents() {
         // This returns a JSON or XML with the users
         return employeeService.findAll();
     }
+
+    @GetMapping(path="/allBooks")
+    public @ResponseBody
+    Iterable<BookDto> getAllBooks() {
+        // This returns a JSON or XML with the users
+        return bookService.findAll();
+    }
+
 
     @GetMapping(path="/all1")
     public String getAllStudents1() {

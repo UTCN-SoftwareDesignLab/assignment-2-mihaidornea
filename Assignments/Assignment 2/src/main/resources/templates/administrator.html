@@ -8,20 +8,86 @@
 
 <h1>Administrator Page</h1>
 
-<form action="#" th:action="@{/goToForm}" method="get">
-    <p><input type="submit" class="button" value="Create Employee" name="create" />
-</form>
+<table>
 
-<form action="#" th:action="@{/seeAll}" method="get">
-    <p><input type="submit" class="button" value="See Employees" name="seeAll" />
-</form>
+    <tr>
 
-<form action="#" th:action="@{/deleteEmployee}" method="get">
-    <p><input type="submit" class="button" value="Delete Employee" name="delete" />
-</form>
+        <th>
+            <form action="#" th:action="@{/goToForm}" method="get">
+                <p><input type="submit" class="button" value="Create Employee" name="createEmployee" />
+            </form>
+        </th>
 
-<form action="#" th:action="@{/updateEmployee}" method="get">
-    <p><input type="submit" class="button" value="Update Employee" name="update" />
-</form>
+        <th>
+            <form action="#" th:action="@{/createBook}" method="get">
+                <p><input type="submit" class="button" value="Create Book" name="createBook" />
+            </form>
+        </th>
 
+    </tr>
+
+    <tr>
+
+        <th>
+            <form action="#" th:action="@{/seeAllEmployees}" method="get">
+                <p><input type="submit" class="button" value="See Employees" name="seeAllEmployees" />
+            </form>
+        </th>
+
+        <th>
+            <form action="#" th:action="@{/seeAllBooks}" method="get">
+                <p><input type="submit" class="button" value="See Books" name="seeAllBooks" />
+            </form>
+        </th>
+
+    </tr>
+
+    <tr>
+
+        <th>
+            <form action="#" th:action="@{/deleteEmployee}" method="get">
+                <p><input type="submit" class="button" value="Delete Employee" name="deleteEmployee" />
+            </form>
+        </th>
+
+        <th>
+            <form action="#" th:action="@{/deleteBook}" method="get">
+                <p><input type="submit" class="button" value="Delete Book" name="deleteBook" />
+            </form>
+        </th>
+
+    </tr>
+
+    <tr>
+
+        <th>
+            <form action="#" th:action="@{/updateEmployee}" method="get">
+                <p><input type="submit" class="button" value="Update Employee" name="updateEmployee" />
+            </form>
+        </th>
+
+        <th>
+            <form action="#" th:action="@{/updateBook}" method="get">
+                <p><input type="submit" class="button" value="Update Book" name="updateBook" />
+            </form>
+        </th>
+
+    </tr>
+
+    <tr>
+
+        <th>
+            <form action="#" th:action="@{/findEmployee}" method="get">
+                <p><input type="submit" class="button" value="Find Employee" name="findEmployee" />
+            </form>
+        </th>
+
+        <th>
+            <form action="#" th:action="@{/findBook}" method="get">
+                <p><input type="submit" class="button" value="Find Book" name="findBook" />
+            </form>
+        </th>
+
+    </tr>
+</table>
 </body>

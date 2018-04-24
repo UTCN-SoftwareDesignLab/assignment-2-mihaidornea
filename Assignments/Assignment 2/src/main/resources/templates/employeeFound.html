@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Employee Find Form</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Found Employee</h1>
+
+<table>
+    <tbody>
+    <th>
+    <td>Email</td>
+    <td>Username</td>
+    <td>Password</td>
+    </th>
+    <tr th:object="${employee}">
+        <td th:text="${ employee.email}">Email</td>
+        <td th:text="${ employee.username }">Username</td>
+        <td th:text="${ employee.password }">Password</td>
+    </tr>
+    </tbody>
+</table>
+
+<form action="#" th:action="@{/goHome}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goHome" />
+</form>
+
+</body>
+</html>

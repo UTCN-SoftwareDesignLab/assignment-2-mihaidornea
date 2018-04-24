@@ -19,7 +19,13 @@ public class Book {
     private String isbn;
 
     @Column
+    private String genre;
+
+    @Column
     private int quantity;
+
+    @Column
+    private float price;
 
     public int getQuantity() {
         return quantity;
@@ -59,5 +65,22 @@ public class Book {
 
     public void setIsbn(String isbn) {
         this.isbn = isbn;
+        System.out.println(this.isbn);
+    }
+
+    public String getGenre() {
+        return genre;
+    }
+
+    public void setGenre(String genre) {
+        this.genre = genre;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
     }
 }

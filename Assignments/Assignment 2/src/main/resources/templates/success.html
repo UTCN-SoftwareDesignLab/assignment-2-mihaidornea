@@ -5,8 +5,19 @@
 </head>
 <h1>Success!</h1>
 <body>
-<a href="/administrator" > Go Back </a>
-<p><a href="/all" > See All</a></p>
+
+<form action="#" th:action="@{/goHome}" method="get">
+    <p><input type="submit" class="button" value="Go To Homepage" name="goHome" />
 </form>
+
+<form action="#" th:action="@{/seeAllEmployees}" method="get">
+    <p><input type="submit" class="button" value="See All Employees" name="seeAll" />
+</form>
+
+<form action="#" th:action="@{/seeAllBooks}" method="get">
+    <p><input type="submit" class="button" value="See All Books" name="seeAll" />
+</form>
+
+
 </body>
 </html>

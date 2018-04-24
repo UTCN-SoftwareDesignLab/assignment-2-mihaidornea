@@ -30,6 +30,16 @@ public class BookBuilder {
         return this;
     }
 
+    public BookBuilder setGenre(String genre){
+        book.setGenre(genre);
+        return this;
+    }
+
+    public BookBuilder setPrice(float price){
+        book.setPrice(price);
+        return this;
+    }
+
     public Book build(){
         return book;
     }

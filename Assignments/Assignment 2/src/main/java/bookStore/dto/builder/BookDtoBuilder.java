@@ -25,7 +25,17 @@ public class BookDtoBuilder {
         return this;
     }
 
-    public BookDtoBuilder seQuantity(int quantity){
+    public BookDtoBuilder setGenre(String genre){
+        bookDto.setGenre(genre);
+        return this;
+    }
+
+    public BookDtoBuilder setPrice(float price){
+        bookDto.setPrice(price);
+        return this;
+    }
+
+    public BookDtoBuilder setQuantity(int quantity){
         bookDto.setQuantity(quantity);
         return this;
     }
