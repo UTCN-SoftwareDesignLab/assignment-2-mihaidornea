@@ -87,7 +87,19 @@
                 <p><input type="submit" class="button" value="Find Book" name="findBook" />
             </form>
         </th>
+    </tr>
 
+    <tr>
+        <th>
+            <form action="#" th:action="@{/generatePdfReport}" method="get">
+                <p><input type="submit" class="button" value="Generate PDF Report" name="generatePdfReport" />
+            </form>
+        </th>
+        <th>
+            <form action="#" th:action="@{/generateCsvReport}" method="get">
+                <p><input type="submit" class="button" value="Generate CSV Report" name="generateCsvReport" />
+            </form>
+        </th>
     </tr>
 </table>
 </body>

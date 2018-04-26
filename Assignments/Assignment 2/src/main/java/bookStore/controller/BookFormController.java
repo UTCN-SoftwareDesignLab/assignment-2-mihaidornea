@@ -2,7 +2,10 @@ package bookStore.controller;
 
 import bookStore.dto.BookDto;
 import bookStore.entity.Book;
+import bookStore.report.CsvStrategy;
+import bookStore.report.PdfStrategy;
 import bookStore.service.BookService;
+import bookStore.service.ReportService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -14,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -21,10 +25,12 @@ import java.util.Map;
 public class BookFormController {
 
     BookService bookService;
+    ReportService reportService;
 
     @Autowired
-    public BookFormController(BookService bookService) {
+    public BookFormController(BookService bookService, ReportService reportService) {
         this.bookService = bookService;
+        this.reportService = reportService;
     }
 
     @GetMapping("/bookCreateForm")
@@ -140,6 +146,21 @@ public class BookFormController {
         return mav;
     }
 
+    @GetMapping("/generatePdfReport")
+    public String generatePdfReport(Model model) throws IOException {
+        List<BookDto> bookDtos = bookService.findAllOutOfStock();
+        reportService.setReportStrategy(new PdfStrategy());
+        reportService.generateReport(bookDtos);
+        return "/success";
+    }
+
+    @GetMapping("/generateCsvReport")
+    public String generateCsvReport(Model model) throws IOException {
+        List<BookDto> bookDtos = bookService.findAllOutOfStock();
+        reportService.setReportStrategy(new CsvStrategy());
+        reportService.generateReport(bookDtos);
+        return "/success";
+    }
 
 }
 
