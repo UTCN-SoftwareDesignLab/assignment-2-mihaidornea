@@ -14,7 +14,7 @@ public interface BookService {
     List<BookDto> findAllByTitle(String title);
     List<BookDto> findAllByGenre(String genre);
     List<BookDto> findAllByAuthor(String author);
-    void create(BookDto bookDto);
+    Book create(BookDto bookDto);
     void delete(BookDto bookDto);
     void sell(BookDto bookDto, int quantity);
     void updatePrice(float price, BookDto bookDto);

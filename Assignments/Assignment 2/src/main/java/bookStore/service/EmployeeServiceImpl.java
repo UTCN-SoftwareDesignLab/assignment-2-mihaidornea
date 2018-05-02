@@ -6,6 +6,8 @@ import bookStore.entity.Employee;
 import bookStore.entity.builder.EmployeeBuilder;
 import bookStore.repository.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -54,8 +56,9 @@ public class EmployeeServiceImpl implements EmployeeService {
     @Override
     public void create(EmployeeDto employeeDto) {
         EmployeeBuilder employeeBuilder = new EmployeeBuilder();
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
         Employee employee = employeeBuilder
-                                .setPassword(employeeDto.getPassword())
+                                .setPassword(encoder.encode(employeeDto.getPassword()))
                                 .setUsername(employeeDto.getUsername())
                                 .setRole(employeeDto.getRole())
                                 .setEmail(employeeDto.getEmail())

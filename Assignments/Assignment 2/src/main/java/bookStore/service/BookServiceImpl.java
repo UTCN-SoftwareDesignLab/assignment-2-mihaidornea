@@ -25,6 +25,7 @@ public class BookServiceImpl implements BookService {
     public BookDto findByIsbn(String isbn) {
         Book book = bookRepository.findByIsbn(isbn);
         BookDto bookDto = new BookDtoBuilder()
+                .setIsbn(book.getIsbn())
                 .setTitle(book.getTitle())
                 .setAuthor(book.getAuthor())
                 .setGenre(book.getGenre())
@@ -62,6 +63,7 @@ public class BookServiceImpl implements BookService {
             BookDto bookDto = new BookDtoBuilder()
                     .setTitle(book.getTitle())
                     .setAuthor(book.getAuthor())
+                    .setIsbn(book.getIsbn())
                     .setGenre(book.getGenre())
                     .setPrice(book.getPrice())
                     .setQuantity(book.getQuantity())
@@ -124,7 +126,7 @@ public class BookServiceImpl implements BookService {
         return bookDtos;       }
 
     @Override
-    public void create(BookDto bookDto) {
+    public Book create(BookDto bookDto) {
         System.out.println(bookDto.getIsbn());
         Book book = new BookBuilder().setAuthor(bookDto.getAuthor())
                             .setTitle(bookDto.getTitle())
@@ -134,6 +136,7 @@ public class BookServiceImpl implements BookService {
                             .setPrice(bookDto.getPrice())
                             .build();
         bookRepository.save(book);
+        return book;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package bookStore.dto;
 
+import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
@@ -11,11 +12,11 @@ public class EmployeeDto {
     private String username;
 
     @NotNull
-    @Pattern(regexp = "^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", message = "Please input a valid email")
+    @Email
     private String email;
 
     @NotNull
-    @Pattern (regexp = "^.*(?=.{8,})(?=..*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$", message = "Password must contain an uppercase letter, a special character and a number!")
+    @Pattern (regexp = "((?=.*\\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%]).{6,20})", message = "Password must contain an uppercase letter, a special character and a number!")
     @Size (min = 8, message = "Password must be at least 8 characters long")
     private String password;
 

@@ -1,6 +1,8 @@
 package bookStore.report;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 import bookStore.dto.BookDto;
@@ -17,7 +19,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 public class PdfStrategy implements ReportStrategy {
 
     @Override
-    public void createReport(List<BookDto> books) throws IOException {
+    public InputStream createReport(List<BookDto> books) throws IOException {
 
         File file = new File("D:/assignment-2-mihaidornea/Assignments/Assignment 2/my_doc.pdf");
         PDDocument doc = PDDocument.load(file);
@@ -55,6 +57,7 @@ public class PdfStrategy implements ReportStrategy {
 
         //Closing the document
         doc.close();
-
+        InputStream inputStream = new FileInputStream(file);
+        return inputStream;
     }
 }

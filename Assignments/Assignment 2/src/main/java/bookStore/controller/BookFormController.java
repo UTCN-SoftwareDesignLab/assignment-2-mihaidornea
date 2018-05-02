@@ -10,16 +10,18 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
+import org.apache.*;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 import java.util.Map;
+
+import static org.apache.tomcat.util.http.fileupload.IOUtils.copy;
 
 @Controller
 public class BookFormController {
@@ -147,18 +149,30 @@ public class BookFormController {
     }
 
     @GetMapping("/generatePdfReport")
-    public String generatePdfReport(Model model) throws IOException {
+    public String generatePdfReport(Model model, HttpServletResponse response) throws IOException {
         List<BookDto> bookDtos = bookService.findAllOutOfStock();
         reportService.setReportStrategy(new PdfStrategy());
-        reportService.generateReport(bookDtos);
+        try{
+            InputStream inputStream = reportService.generateReport(bookDtos);
+            copy(inputStream, response.getOutputStream());
+            response.flushBuffer();
+        } catch (IOException ex){
+            return "/administrator";
+        }
         return "/success";
     }
 
     @GetMapping("/generateCsvReport")
-    public String generateCsvReport(Model model) throws IOException {
+    public String generateCsvReport(Model model, HttpServletResponse response) throws IOException {
         List<BookDto> bookDtos = bookService.findAllOutOfStock();
         reportService.setReportStrategy(new CsvStrategy());
-        reportService.generateReport(bookDtos);
+        try{
+            InputStream inputStream = reportService.generateReport(bookDtos);
+            copy(inputStream, response.getOutputStream());
+            response.flushBuffer();
+        } catch (IOException ex){
+            return "/administrator";
+        }
         return "/success";
     }
 
